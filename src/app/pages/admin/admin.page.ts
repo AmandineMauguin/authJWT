@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private storage: Storage,
+  ) { }
 
   ngOnInit() {
+  }
+
+  specialData='';
+
+  getSpecialInfo(){
+    this.authService.getSpecialData().subscribe(res => {
+      this.specialData = res['msg'];
+    });
+  }
+
+  logout(){
+    this.authService.logout();
+  };
+
+  clearToken(){
+    //pour tester
+    this.storage.remove('access_token');
   }
 
 }

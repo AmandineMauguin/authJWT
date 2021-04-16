@@ -44,7 +44,7 @@ export class AuthService {
     return this.http.post(this.url+ '/register', credentials).pipe(
       catchError(e=> {
         alert(e.error.msg);
-        throw new Error(e);
+        throw e;
       })
     )
   };
@@ -58,7 +58,7 @@ export class AuthService {
       }),
       catchError(e => {
         alert(e.error.msg);
-        throw new Error(e);
+        throw e;
       })
     )
   };
@@ -70,8 +70,19 @@ export class AuthService {
   };
 
   getSpecialData(){
-    this.http.get(this.url+'/admin').pipe(
-
+    return this.http.get(this.url+'/admin').pipe(
+      tap(res => {
+        console.log(res);
+        
+      }),
+      catchError(e => {
+        const status = e.status;
+        if (status === 401){
+          alert('PAS AUTORISE bouhou');
+          this.logout;
+        }
+        throw e;
+      })
     )
   };
 
