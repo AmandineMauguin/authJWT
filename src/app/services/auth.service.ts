@@ -50,13 +50,14 @@ export class AuthService {
   };
 
   login(credentials){
-    return this.http.post(this.url+'/register',credentials).pipe(
+    return this.http.post(this.url+'/login',credentials).pipe(
       tap(res => {
         this.storage.set(TOKEN_KEY,res['token']);
         this.user = this.helper.decodeToken(res['token']);
         this.authentificationState.next(true);
       }),
       catchError(e => {
+        alert(e.error.msg);
         throw new Error(e);
       })
     )
@@ -75,6 +76,6 @@ export class AuthService {
   };
 
   isAuthenticated(){
-    return this.authentificationState;
+    return this.authentificationState.value;
   };
 }
