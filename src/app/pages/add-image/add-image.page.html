@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Upload file
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="fixed">
+      Upload a pic
+    </ion-label>
+    <input (change)="onFileChange($event)" type="file" accept="image/jpeg,image/png" />
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">
+      Title
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">
+      Author
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="author"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">
+      Description
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="description"></ion-input>
+  </ion-item>
+
+<ion-button [routerLink]="['/admin']" (click)="uploadFile()" expand="block">
+  Upload file
+</ion-button>
+
+</ion-content>

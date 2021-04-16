@@ -22,6 +22,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'add-image',
+    loadChildren: () => import('./pages/add-image/add-image.module').then( m => m.AddImagePageModule)
+  },
+  
+  {
+    path: 'modif-image/:id',
+    loadChildren: () => import('./pages/modif-image/modif-image.module').then( m => m.ModifImagePageModule)
+  },
 ];
 
 @NgModule({

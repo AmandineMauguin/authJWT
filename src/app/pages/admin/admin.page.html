@@ -1,13 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Administration</ion-title>
+    <ion-title>Collection</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  {{specialData}}
+
+  <ion-list>
+    <ion-item [routerLink]="['/modif-image/', image._id]" *ngFor="let image of images">
+      <ion-label>
+
+        <img src="{{'http://localhost:3001/'+image.filename}}">
+        <h2><h1>Titre : </h1>{{image.title}}</h2>
+        <h2><h1>Auteur :</h1> {{image.author}}</h2>
+        <ion-button horizontal="end" color="danger" (click)="delete(image._id)"> Delete</ion-button>
+      </ion-label>
+      
+      
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/add-image']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+
+
+  <!-- {{specialData}}
   <ion-button (click)="getSpecialInfo()" expand="block"> Les special infos</ion-button>
   <ion-button (click)="clearToken()" expand="block"> Clear</ion-button>
   <ion-button (click)="logout()" expand="block"> Logout</ion-button>
-
+ {{test}} -->
 </ion-content>

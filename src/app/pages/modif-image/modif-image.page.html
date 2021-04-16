@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modifImage</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+    <ion-item>
+      <ion-label> Title </ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="title" required="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label> Author </ion-label>
+      <ion-input type="text" name="author" [(ngModel)]="author" required="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label> Description </ion-label>
+      <ion-input type="text" name="description" [(ngModel)]="description" required="true"></ion-input>
+    </ion-item>
+    
+    <ion-button type="submit" expand="block"> Update</ion-button>
+    
+  </form>
+
+</ion-content>

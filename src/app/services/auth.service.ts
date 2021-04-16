@@ -20,6 +20,7 @@ export class AuthService {
     private alertController: AlertController
   ) {
     this.storage.create();
+    this.checkToken();
   }
   url = environment.url;
   user = null;
@@ -71,9 +72,8 @@ export class AuthService {
 
   getSpecialData(){
     return this.http.get(this.url+'/admin').pipe(
-      tap(res => {
+      tap((res) => {
         console.log(res);
-        
       }),
       catchError(e => {
         const status = e.status;
